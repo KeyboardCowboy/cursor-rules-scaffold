@@ -1,0 +1,56 @@
+---
+description: Generating and managing cursor rules.
+globs: 
+alwaysApply: false
+---
+## Cursor Rules Structure
+
+### Description
+This rule defines the standard structure and location for all Cursor rules. Cursor rules are markdown files that provide documentation and guidance for the AI assistant.
+
+### Rule Details
+- All Cursor rules must be stored in the `.cursor/rules` directory
+- All rule files must use the `.mdc` extension (Markdown Cursor)
+- All rules must begin with a level 2 heading (##)
+- Subsequent sections should use level 3 (###), 4 (####), and 5 (#####) headings as needed
+- Rules are organized into three categories:
+  1. Global rules (`.cursor/rules/global/`)
+     - Apply to all projects
+     - Define universal standards and patterns
+  2. Project rules (`.cursor/rules/project/`)
+     - Specific to individual projects
+     - Define project-specific patterns and requirements
+  3. Personal rules (`.cursor/rules/personal/`)
+     - User-specific preferences and patterns
+     - Define individual coding style and preferences
+
+### Implementation
+When creating new rules:
+1. Determine the appropriate category (global/project/personal)
+2. Create the rule file in the corresponding directory
+3. Use the `.mdc` extension
+4. Begin the file with a level 2 heading (##)
+5. Use proper heading hierarchy for subsections
+6. Follow the standard markdown format
+
+### Examples
+```markdown
+## Example Rule Title
+
+### Section One
+Content for section one
+
+#### Subsection
+Content for subsection
+
+### Section Two
+Content for section two
+```
+
+### Notes
+- Always verify the category of a rule before creating it
+- If the category is unclear, ask the user to specify which category the rule belongs to
+- Maintain consistent naming conventions within each category
+- Keep rules focused and specific to their category
+- Always start with level 2 heading (##)
+- Maintain proper heading hierarchy (## -> ### -> #### -> #####)

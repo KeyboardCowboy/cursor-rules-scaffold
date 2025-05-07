@@ -1,0 +1,32 @@
+# Memory bank files
+memory-bank/
+
+# Personal cursor rules - ignore .mdc files but keep folder structure
+.cursor/rules/personal/**/*.mdc
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node modules and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local 
