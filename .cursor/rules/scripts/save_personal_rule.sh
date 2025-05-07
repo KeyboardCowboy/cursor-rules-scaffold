@@ -38,12 +38,11 @@ echo "Creating/updating rule file: $HOME_RULES_DIR/$RULE_NAME"
 cp "$SOURCE_FILE" "$HOME_RULES_DIR/$RULE_NAME"
 
 # Create symlink in project directory
-if [ ! -L "$PROJECT_RULES_DIR/$RULE_NAME" ]; then
-    echo "Creating symlink in project: $PROJECT_RULES_DIR/$RULE_NAME"
-    ln -s "$HOME_RULES_DIR/$RULE_NAME" "$PROJECT_RULES_DIR/$RULE_NAME"
-else
-    echo "Symlink already exists: $PROJECT_RULES_DIR/$RULE_NAME"
-fi
+echo "Creating symlink in project: $PROJECT_RULES_DIR/$RULE_NAME"
+# Remove existing file or symlink if it exists
+rm -f "$PROJECT_RULES_DIR/$RULE_NAME"
+# Create new symlink
+ln -s "$HOME_RULES_DIR/$RULE_NAME" "$PROJECT_RULES_DIR/$RULE_NAME"
 
 # Commit and push changes if git is available
 if [ "$GIT_AVAILABLE" = true ]; then
