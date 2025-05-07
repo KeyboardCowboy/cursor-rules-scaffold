@@ -21,10 +21,15 @@ PROJECT_RULES_DIR=".cursor/rules/personal"
 RULE_NAME="$1.mdc"
 SOURCE_FILE="$2"
 
+# Store current directory
+CURRENT_DIR=$(pwd)
+
 # Pull latest changes from repository if git is available
 if [ "$GIT_AVAILABLE" = true ]; then
     echo "Pulling latest changes..."
-    git pull origin main || git pull origin master
+    cd "$HOME_RULES_DIR" || exit 1
+    git pull || exit 1
+    cd "$CURRENT_DIR" || exit 1
 fi
 
 # Check if source file exists
@@ -47,16 +52,22 @@ ln -sf "$HOME_RULES_DIR/$RULE_NAME" "$PROJECT_RULES_DIR/$RULE_NAME"
 # Commit and push changes if git is available
 if [ "$GIT_AVAILABLE" = true ]; then
     echo "Committing and pushing changes..."
-    # Add all modified files in the .cursor/rules directory except personal rules
-    git add .cursor/rules/README.md .cursor/rules/global/ .cursor/rules/scripts/
+    # Change to home rules directory for git operations
+    cd "$HOME_RULES_DIR" || exit 1
+    
+    # Add all modified files in the rules directory except personal rules
+    git add .
     
     # Check if there are any changes to commit
     if git status --porcelain | grep -q '^'; then
-        git commit -m "chore(rules): update rules and scripts"
+        git commit -m "chore(rules): update personal rules"
         git push
     else
         echo "No changes to commit"
     fi
+    
+    # Return to original directory
+    cd "$CURRENT_DIR" || exit 1
 fi
 
 echo "Done! Rule '$RULE_NAME' has been set up${GIT_AVAILABLE:+ and synchronized with repository}." 
