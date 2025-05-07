@@ -42,18 +42,20 @@ echo "Creating symlink in project: $PROJECT_RULES_DIR/$RULE_NAME"
 # Remove existing file or symlink if it exists
 rm -f "$PROJECT_RULES_DIR/$RULE_NAME"
 # Create new symlink
-ln -s "$HOME_RULES_DIR/$RULE_NAME" "$PROJECT_RULES_DIR/$RULE_NAME"
+ln -sf "$HOME_RULES_DIR/$RULE_NAME" "$PROJECT_RULES_DIR/$RULE_NAME"
 
 # Commit and push changes if git is available
 if [ "$GIT_AVAILABLE" = true ]; then
     echo "Committing and pushing changes..."
-    # Only commit the script changes, personal rules are git-ignored
-    if git status --porcelain .cursor/rules/scripts/save_personal_rule.sh | grep -q '^'; then
-        git add .cursor/rules/scripts/save_personal_rule.sh
-        git commit -m "chore(scripts): update save_personal_rule script"
+    # Add all modified files in the .cursor/rules directory except personal rules
+    git add .cursor/rules/README.md .cursor/rules/global/ .cursor/rules/scripts/
+    
+    # Check if there are any changes to commit
+    if git status --porcelain | grep -q '^'; then
+        git commit -m "chore(rules): update rules and scripts"
         git push
     else
-        echo "No script changes to commit"
+        echo "No changes to commit"
     fi
 fi
 

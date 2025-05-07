@@ -53,7 +53,7 @@ This directory contains Cursor rules organized into three categories, working al
 All rules are stored in `.mdc` files (Markdown Cursor) with the following structure:
 
 ```markdown
-# Rule Title
+## Rule Title
 
 Description of the rule and its purpose.
 
