@@ -2,6 +2,8 @@
 
 A template repository for managing Cursor rules across different levels of scope: global, project, and personal. This scaffold provides a structured approach to organizing and maintaining Cursor rules for consistent development practices.
 
+> This project is based on the structure from [tacticlaunch/cursor-bank](https://github.com/tacticlaunch/cursor-bank), adapted to focus specifically on Cursor rules management.
+
 ## Purpose
 
 This scaffold is designed to help teams and individuals:
