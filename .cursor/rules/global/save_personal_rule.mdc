@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Save Personal Rule
+
+## Description
+This rule manages the process of saving personal rules to the global rules directory and creating symlinks in the current project. It ensures proper organization and accessibility of personal rules across projects.
+
+## When to Use
+- When a new personal rule needs to be saved to the global rules directory
+- When a personal rule needs to be linked to the current project
+- When managing personal rule organization and accessibility
+
+## Implementation
+The rule follows these steps:
+1. User initiates by stating they want to save a personal rule
+2. Assistant asks which rule file to save
+3. Assistant uses save_personal_rule.sh script to:
+   - Copy the rule to ~/.cursor/rules/personal/
+   - Create a symlink in .cursor/rules/personal/
+   - Handle existing files/symlinks appropriately
+
+## Example Interaction
+User: "I want to save my new personal rule"
+Assistant: "Which rule file would you like to save?"
+User: "my_custom_rule.mdc"
+Assistant: "I'll help you save that rule. Let me run the script for you."
+
+## Dependencies
+- save_personal_rule.sh script in .cursor/rules/scripts/
+- Proper permissions for creating symlinks
+- Existence of required directories:
+  - ~/.cursor/rules/personal/
+  - .cursor/rules/personal/
+
+## Notes
+- The script will prompt for confirmation before overwriting existing files
+- Symlinks are created automatically if they don't exist
+- The rule maintains proper organization of personal rules across projects
