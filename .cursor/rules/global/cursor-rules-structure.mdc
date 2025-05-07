@@ -6,7 +6,7 @@ alwaysApply: true
 ## Cursor Rules Structure
 
 ### Description
-This rule defines the standard structure and location for all Cursor rules. Cursor rules are markdown files that provide documentation and guidance for the AI assistant.
+This rule defines the standard structure and location for all Cursor rule files. Cursor rules are markdown files that provide documentation and guidance for the AI assistant.
 
 ### Rule Details
 - All Cursor rules must be stored in the `.cursor/rules` directory
